@@ -1,3 +1,6 @@
-import './global.css'
+import './styles/global.css';
+import mainCanvas from './mainCanvas';
 
-console.log('Hello world')
+window.onload = () => {
+    mainCanvas()
+}
