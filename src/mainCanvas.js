@@ -3,28 +3,25 @@ import './styles/mainCanvas.css'
 
 const mainCanvas = () => {
     const canvas = document.getElementById('home');
+    const ctx = canvas.getContext('2d');
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
 
     const TYPED_MESSAGES = [
-        "Full-Stack Developer",
+        "Software Engineer",
         "Front-End Developer",
         "Back-End Developer",
     ];
 
-    const typewriter = new Typewriter(TYPED_MESSAGES)
+    const typewriter = new Typewriter(TYPED_MESSAGES, canvas)
 
     const init = () => {
-        window.requestAnimationFrame(animate);
+        requestAnimationFrame(animate);
     }
 
     const animate = () => {
-        const ctx = canvas.getContext('2d');
         ctx.clearRect(0, 0, canvas.width, canvas.height);
-        ctx.fillText(typewriter.text, canvas.width/2-200, canvas.height/2+100);
-        ctx.font = '44px VT323';
-        ctx.fillStyle = 'white';
-        typewriter.next()
+        typewriter.draw()
         setTimeout(() => requestAnimationFrame(animate), 100)
     }
 

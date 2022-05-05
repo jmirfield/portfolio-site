@@ -12,53 +12,85 @@
     position: fixed;
     left: 0;
     right: 0;
-    background-color: white;
-    height: 2rem;
-    font-size: 1.5rem;
+    background-color: whitesmoke;
     z-index: 2;
     animation: slidein .5s;
-}
+    height: 2rem;
+    font-size: 1.5rem;
 
-@keyframes slidein {
-    from {
-        transform: translateY(-10rem);
-    }
-    to {
-        transform: translateY(0);
-    }
-}
-
-.header-bye {
-    animation: slideout 3s;
-    transform: translateY(-10rem);
-}
-
-@keyframes slideout {
-    from {
-        transform: translateY(0);
-    }
-    to {
-        transform: translateY(-10rem);
-    }
 }
 
 .header>a {
     margin-right: 1rem;
 }
 
+.header-bye {
+    animation: slideout .5s;
+    transform: translateY(-10rem);
+}
+
+.up, svg a {
+    position: fixed;
+    right: 20px;
+    top: 40px;
+    z-index: 2;
+    fill: white;
+}
+
+.up>a:hover {
+    animation: bounce 1s infinite;
+}
+
+
+.up-enter {
+    animation: slidein .5s;
+}
+
 .main {
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     height: 100%;
 }
 
-.main>h1 {
-    color: white;
-    font-size: 72px;
-    z-index: 2;
+@keyframes slidein {
+    from {
+        transform: translateY(-10rem);
+    }
+
+    to {
+        transform: translateY(0);
+    }
 }
 
-#about {
-    
+
+@keyframes slideout {
+    from {
+        transform: translateY(0);
+    }
+
+    to {
+        transform: translateY(-10rem);
+    }
+}
+
+@keyframes bounce {
+    from {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-5rem);
+    }
+
+    to {
+        transform: translateY(0);
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .up {
+        display: none;
+    }
 }
