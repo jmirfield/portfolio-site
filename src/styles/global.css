@@ -76,7 +76,7 @@ ul {
     justify-content: space-around;
     align-items: center;
     background-color: #2c80da;
-    border-radius: 1rem;
+    border-radius: .5rem;
     border: solid 1px white;
 }
 
