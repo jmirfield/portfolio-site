@@ -20,7 +20,7 @@ const mainCanvas = () => {
     const animate = () => {
         const ctx = canvas.getContext('2d');
         ctx.clearRect(0, 0, canvas.width, canvas.height);
-        ctx.fillText(typewriter.text, canvas.width/2-175, canvas.height/2+75);
+        ctx.fillText(typewriter.text, canvas.width/2-200, canvas.height/2+75);
         ctx.font = '44px VT323';
         ctx.fillStyle = 'white';
         typewriter.next()
