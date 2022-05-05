@@ -73,9 +73,15 @@
             <section class="container__left">
                 <h2>Contact Me!</h2>
                 <div class="line"></div>
-                <form id="contact-form">
-                    <input placeholder="Your name"></input>
-                    <input placeholder="Your email"></input>
+                <form 
+                id="contact-form" 
+                action="mailto:justin.mirfield@gmail.com"
+                enctype="multipart/form-data"
+                name="contact-form"
+                method="POST"
+                >
+                    <input placeholder="Your name" name="ContactName" type="text"></input>
+                    <input placeholder="Your email" name="ContactEmail" type="email"></input>
                     <input placeholder="Subject"></input>
                     <textarea placeholder="Write something here..."></textarea>
                     <section>
