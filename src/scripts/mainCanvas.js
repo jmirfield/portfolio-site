@@ -1,5 +1,5 @@
 import Typewriter from "./typewriter";
-import './styles/mainCanvas.css'
+import '../styles/mainCanvas.css'
 
 const mainCanvas = () => {
     const canvas = document.getElementById('home');
