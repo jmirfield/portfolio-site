@@ -31,26 +31,6 @@ h2 {
     font-size: 3rem;
 }
 
-.container {
-    display: flex;
-}
-
-.container>section {
-    display: flex;
-    flex-grow: 1;
-    justify-content: space-around;
-    align-items: center;
-    background-color: #2c80da;
-    margin: 5rem;
-    border-radius: 1rem;
-    border: solid 1px white;
-}
-
-.container__left, .container__right {
-    display: flex;
-    flex-direction: column;
-    padding: 2rem;
-}
 
 form {
     display: flex;
@@ -77,6 +57,34 @@ button {
     color: #2c80da;
 }
 
+ul {
+    margin-top: 1rem;
+    list-style-position: inside;
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
+
+
+.container {
+    display: flex;
+    z-index: 4;
+}
+
+.container>section {
+    display: flex;
+    flex-grow: 1;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #2c80da;
+    border-radius: 1rem;
+    border: solid 1px white;
+}
+
+.container__left, .container__right {
+    display: flex;
+    flex-direction: column;
+}
+
 .line {
     margin-top: 1rem;
     height: 2px;
@@ -84,15 +92,30 @@ button {
     width: 80%;
 }
 
+#profile {
+    width: 300px;
+    height: 300px;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 1rem;
+}
+
 #about {
     flex-direction: column;
 }
+
+#about>section {
+    display: flex;
+    justify-content: space-between;
+    width: 75%
+}
+
 
 #experience {
     flex-direction: column;
 }
 
-#experience > h2 {
+#experience>h2 {
     margin-top: 2rem;
 }
 
@@ -105,9 +128,37 @@ button {
     h2 {
         font-size: 24px;
     }
+
+    .container > section {
+        margin: 1rem;
+    }
+
     #contact {
         flex-direction: column;
     }
+
+    #contact > section {
+        width: 90%;
+    }
+    
+    #contact-form {
+        margin-bottom: 1rem;
+    }
+
+    #about>section {
+        flex-direction: column;
+        width: 90%;
+    }
+
+    #about .container__left {
+        margin-top: 1rem;
+    }
+
+    p {
+        padding-top: 1rem;
+    }
+
+
 }
 
 @media screen and (min-width: 768px) {
@@ -123,5 +174,26 @@ button {
 
     .container {
         margin: 5rem;
+    }
+
+    .container > section {
+        margin: 5rem;
+    }
+
+    .container__left, .container__right {
+        padding: 2rem;
+    }
+
+    #about .container__left {
+        width: 40rem;
+    }
+
+    .container__left>p {
+        font-size: 24px;
+        margin-top: 1rem;
+    }
+
+    li {
+        font-size: 120%;
     }
 }
