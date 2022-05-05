@@ -3,6 +3,8 @@ html, body {
     height: 100%;
     box-sizing: border-box;
     font-family: VT323, sans-serif;
+    background-color: #417ec1;
+    color: white;
 }
 
 * {
@@ -10,21 +12,10 @@ html, body {
     padding: 0;
 }
 
-#home {
-    display: block;
-    position: absolute;
-    background-color: black;
-    z-index: -1;
+h2 {
+    font-size: 3rem;
 }
 
-.heading {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-}
-
-.heading>h1 {
-    color: white;
-    font-size: 72px;
+.container {
+    margin: 5rem 5rem;
 }

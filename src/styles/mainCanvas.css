@@ -1,0 +1,50 @@
+#home {
+    display: block;
+    position: absolute;
+    background-color: #417ec1;
+    z-index: 1;
+}
+
+.header {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    position: fixed;
+    left: 0;
+    right: 0;
+    background-color: white;
+    height: 2rem;
+    font-size: 1.5rem;
+    z-index: 2;
+}
+
+.header-gone {
+    animation: slideout 3s;
+    transform: translateY(-10rem);
+}
+
+@keyframes slideout {
+    from {
+        transform: translateY(0);
+    }
+    to {
+        transform: translateY(-10rem);
+    }
+}
+
+.header>a {
+    margin-right: 1rem;
+}
+
+.main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+.main>h1 {
+    color: white;
+    font-size: 72px;
+    z-index: 2;
+}
