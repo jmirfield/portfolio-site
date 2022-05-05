@@ -1,7 +1,8 @@
 import './styles/global.css';
 import mainCanvas from './mainCanvas';
-import headerEvents from './headerEvents';
+import setHeaderEvents from './headerEvents';
 
 window.onload = () => {
     mainCanvas()
+    setHeaderEvents()
 }

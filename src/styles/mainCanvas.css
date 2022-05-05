@@ -16,9 +16,19 @@
     height: 2rem;
     font-size: 1.5rem;
     z-index: 2;
+    animation: slidein .5s;
 }
 
-.header-gone {
+@keyframes slidein {
+    from {
+        transform: translateY(-10rem);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
+.header-bye {
     animation: slideout 3s;
     transform: translateY(-10rem);
 }
@@ -47,4 +57,8 @@
     color: white;
     font-size: 72px;
     z-index: 2;
+}
+
+#about {
+    
 }
