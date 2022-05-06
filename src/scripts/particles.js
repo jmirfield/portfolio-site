@@ -3,9 +3,11 @@
 class Particles {
     #list;
     #canvas;
+	#max;
     constructor(n, canvas) {
         this.#list = new Array(n);
         this.#canvas = canvas;
+	this.#max = screen.width > 768 ? 5000 : 2000;
         this.mouse = {
             down: false,
             x: undefined,
@@ -17,7 +19,7 @@ class Particles {
 
     #init() {
         for (let i = 0; i < this.#list.length; i++) {
-            this.#list[i] = new Particle(Math.floor(Math.random() * this.#canvas.width), Math.floor(Math.random() * this.#canvas.height), this.#list);
+            this.#list[i] = new Particle(Math.floor(Math.random() * this.#canvas.width), Math.floor(Math.random() * this.#canvas.height), this.#list, this.#max);
         }
         const rect = this.#canvas.getBoundingClientRect()
         this.#canvas.addEventListener('mousedown', (e) => {
@@ -54,13 +56,14 @@ class Particles {
 }
 
 class Particle {
-    constructor(x, y, list) {
+    constructor(x, y, list, max) {
         this.x = x;
         this.y = y;
         this.width = Math.floor(Math.random() * 3) + 1;
         this.height = Math.floor(Math.random() * 3) + 1;
         this.count = 0;
         this.list = list;
+	this.max = max;
     }
 
     update({ down, x, y }) {
@@ -82,7 +85,7 @@ class Particle {
         this.x += xVel;
         this.y += yVel;
         if (this.count > 20) {
-            if (this.list.length < 5000) {
+            if (this.list.length < this.max) {
                 const particle = new Particle(this.x, this.y, this.list);
                 this.list.push(particle);
                 this.count = 0;
