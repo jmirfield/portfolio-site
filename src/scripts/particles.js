@@ -57,8 +57,8 @@ class Particle {
     constructor(x, y, list) {
         this.x = x;
         this.y = y;
-        this.width = Math.floor(Math.random() * 4);
-        this.height = Math.floor(Math.random() * 4);
+        this.width = Math.floor(Math.random() * 3) + 1;
+        this.height = Math.floor(Math.random() * 3) + 1;
         this.count = 0;
         this.list = list;
     }
@@ -82,7 +82,7 @@ class Particle {
         this.x += xVel;
         this.y += yVel;
         if (this.count > 20) {
-            if(this.list.length < 5000){
+            if (this.list.length < 5000) {
                 const particle = new Particle(this.x, this.y, this.list);
                 this.list.push(particle);
                 this.count = 0;

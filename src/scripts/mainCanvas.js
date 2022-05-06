@@ -11,7 +11,7 @@ const mainCanvas = () => {
     const TYPED_MESSAGES = [
         "Software Engineer",
         "Front-End Developer",
-        "Back-End Developer",
+        "Back-End Developer"
     ];
 
     const typewriter = new Typewriter(TYPED_MESSAGES, canvas);
