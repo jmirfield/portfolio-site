@@ -98,7 +98,7 @@ ul {
     margin-top: 1rem;
     margin-bottom: 1rem;
     border-radius: 1rem;
-	border: solid 1px white;
+    border: solid 1px white;
 }
 
 #about {
@@ -130,7 +130,7 @@ ul {
         font-size: 24px;
     }
 
-    .container > section {
+    .container>section {
         margin: 1rem;
     }
 
@@ -138,10 +138,10 @@ ul {
         flex-direction: column;
     }
 
-    #contact > section {
+    #contact>section {
         width: 90%;
     }
-    
+
     #contact-form {
         margin-bottom: 1rem;
     }
@@ -177,7 +177,7 @@ ul {
         margin: 5rem;
     }
 
-    .container > section {
+    .container>section {
         margin: 5rem;
     }
 

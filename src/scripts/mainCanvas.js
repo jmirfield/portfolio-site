@@ -1,5 +1,6 @@
 import Typewriter from "./typewriter";
-import '../styles/mainCanvas.css'
+import Particles from "./particles";
+import '../styles/mainCanvas.css';
 
 const mainCanvas = () => {
     const canvas = document.getElementById('home');
@@ -13,7 +14,9 @@ const mainCanvas = () => {
         "Back-End Developer",
     ];
 
-    const typewriter = new Typewriter(TYPED_MESSAGES, canvas)
+    const typewriter = new Typewriter(TYPED_MESSAGES, canvas);
+    const particles = new Particles(500, canvas);
+
 
     const init = () => {
         requestAnimationFrame(animate);
@@ -21,7 +24,8 @@ const mainCanvas = () => {
 
     const animate = () => {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
-        typewriter.draw()
+        typewriter.draw();
+        particles.draw();
         setTimeout(() => requestAnimationFrame(animate), 100)
     }
 

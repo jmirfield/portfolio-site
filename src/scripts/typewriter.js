@@ -1,3 +1,5 @@
+'use strict';
+
 class Typewriter {
     #messages;
     #position;
@@ -16,6 +18,24 @@ class Typewriter {
         this.#canvas = canvas;
     }
 
+    
+    get text() {
+        if (this.#delay % 5 !== 0) {
+            return this.#text + " "
+        }
+        return this.#text + "_";
+    }
+    
+    draw() {
+        const ctx = this.#canvas.getContext('2d');
+        ctx.fillText(this.text, this.#canvas.width / 2, this.#canvas.height / 2 + 120);
+        ctx.textBaseline = 'middle';
+        ctx.textAlign = 'center';
+        ctx.font = '44px VT323';
+        ctx.fillStyle = 'white';
+        this.#next()
+    }
+    
     #next() {
         switch (this.#stage) {
             //Start typing
@@ -55,24 +75,6 @@ class Typewriter {
             }
         }
     }
-
-    get text() {
-        if (this.#delay % 5 !== 0) {
-            return this.#text + " "
-        }
-        return this.#text + "_";
-    }
-
-    draw() {
-        const ctx = this.#canvas.getContext('2d');
-        ctx.fillText(this.text, this.#canvas.width / 2, this.#canvas.height / 2 + 120);
-        ctx.textBaseline = 'middle';
-        ctx.textAlign = 'center';
-        ctx.font = '44px VT323';
-        ctx.fillStyle = 'white';
-        this.#next()
-    }
-
 }
 
 export default Typewriter;
