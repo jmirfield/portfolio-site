@@ -75,7 +75,7 @@ ul {
     flex-grow: 1;
     justify-content: space-around;
     align-items: center;
-    background-color: #2c80da;
+    background-color: #417ec1;
     border-radius: .5rem;
     border: solid 1px white;
 }
@@ -98,6 +98,7 @@ ul {
     margin-top: 1rem;
     margin-bottom: 1rem;
     border-radius: 1rem;
+	border: solid 1px white;
 }
 
 #about {

@@ -12,17 +12,25 @@
     position: fixed;
     left: 0;
     right: 0;
-    background-color: whitesmoke;
+    background-color: #417ec1;
     z-index: 2;
     animation: slidein .5s;
     height: 2rem;
     font-size: 1.5rem;
-
+border-bottom: solid 1px white;
 }
 
 .header>a {
+	color: white;
     margin-right: 1rem;
+	text-decoration: none;
 }
+
+.header>a:hover {
+	animation: bob .25s infinite;
+}
+
+
 
 .header-bye {
     animation: slideout .5s;
@@ -31,7 +39,7 @@
 
 .up, svg a {
     position: fixed;
-    right: 20px;
+    right: 15px;
     top: 40px;
     z-index: 2;
     fill: white;
@@ -82,6 +90,20 @@
 
     50% {
         transform: translateY(-5rem);
+    }
+
+    to {
+        transform: translateY(0);
+    }
+}
+
+@keyframes bob{
+    from {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-.2rem);
     }
 
     to {
