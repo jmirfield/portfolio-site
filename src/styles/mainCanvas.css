@@ -17,20 +17,14 @@
     animation: slidein .5s;
     height: 2rem;
     font-size: 1.5rem;
-border-bottom: solid 1px white;
+    border-bottom: solid 1px white;
 }
 
 .header>a {
-	color: white;
+    color: white;
     margin-right: 1rem;
-	text-decoration: none;
+    text-decoration: none;
 }
-
-.header>a:hover {
-	animation: bob .25s infinite;
-}
-
-
 
 .header-bye {
     animation: slideout .5s;
@@ -60,6 +54,12 @@ border-bottom: solid 1px white;
     align-items: center;
     justify-content: center;
     height: 100%;
+}
+
+@media (hover:none) or (pointer: fine) {
+    .header>a:hover {
+        animation: bob .25s infinite;
+    }
 }
 
 @keyframes slidein {
@@ -97,7 +97,7 @@ border-bottom: solid 1px white;
     }
 }
 
-@keyframes bob{
+@keyframes bob {
     from {
         transform: translateY(0);
     }
