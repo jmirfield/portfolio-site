@@ -15,7 +15,7 @@ const mainCanvas = () => {
     ];
 
     const typewriter = new Typewriter(TYPED_MESSAGES, canvas);
-    const particles = new Particles(500, canvas);
+    const particles = new Particles(50, canvas);
 
 
     const init = () => {

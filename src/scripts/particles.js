@@ -17,7 +17,7 @@ class Particles {
 
     #init() {
         for (let i = 0; i < this.#list.length; i++) {
-            this.#list[i] = new Particle(this.#canvas);
+            this.#list[i] = new Particle(Math.floor(Math.random() * this.#canvas.width), Math.floor(Math.random() * this.#canvas.height), this.#list);
         }
         const rect = this.#canvas.getBoundingClientRect()
         this.#canvas.addEventListener('mousedown', (e) => {
@@ -54,15 +54,13 @@ class Particles {
 }
 
 class Particle {
-    x;
-    y;
-    width;
-    height;
-    constructor(canvas) {
-        this.x = Math.floor(Math.random() * canvas.width);
-        this.y = Math.floor(Math.random() * canvas.height);
+    constructor(x, y, list) {
+        this.x = x;
+        this.y = y;
         this.width = Math.floor(Math.random() * 4);
         this.height = Math.floor(Math.random() * 4);
+        this.count = 0;
+        this.list = list;
     }
 
     update({ down, x, y }) {
@@ -83,6 +81,15 @@ class Particle {
         const yVel = Math.random() < .5 ? 1 : -1;
         this.x += xVel;
         this.y += yVel;
+        if (this.count > 20) {
+            if(this.list.length < 5000){
+                const particle = new Particle(this.x, this.y, this.list);
+                this.list.push(particle);
+                this.count = 0;
+            }
+        } else {
+            this.count++;
+        }
     }
 }
 
