@@ -134,6 +134,7 @@ class GameOfLife {
     }
 
     draw() {
+        this.#ctx.globalAlpha = .5;
         if (this.#debug) {
             this.#drawGrid();
         }

@@ -20,23 +20,25 @@ class Typewriter {
         this.#delay = 0;
     }
 
-    
+
     get text() {
         if (this.#delay % 5 !== 0) {
             return this.#text + " "
         }
         return this.#text + "_";
     }
-    
+
     draw() {
-        this.#ctx.fillText(this.text, this.#context.width / 2, this.#context.height / 2 + 120);
-        this.#ctx.textBaseline = 'middle';
-        this.#ctx.textAlign = 'center';
+        this.#ctx.globalAlpha = 1;
         this.#ctx.font = '44px VT323';
         this.#ctx.fillStyle = 'white';
+        this.#ctx.textBaseline = 'middle';
+        this.#ctx.textAlign = 'center';
+        this.#ctx.fillText(this.text, this.#context.width / 2, this.#context.height / 2 + 120);
+        this.#ctx.strokeText(this.text, this.#context.width / 2, this.#context.height / 2 + 120);
         this.#next()
     }
-    
+
     #next() {
         switch (this.#stage) {
             //Start typing
