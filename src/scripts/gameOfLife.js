@@ -132,6 +132,10 @@ class GameOfLife {
         this.#drawCells();
     }
 
+    reset() {
+        this.startGame();
+    }
+
 }
 
 export default GameOfLife;

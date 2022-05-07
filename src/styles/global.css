@@ -50,7 +50,7 @@ textarea {
 
 button {
     margin-top: 2rem;
-    padding: 1rem;
+    padding: .5rem;
     width: 10rem;
     border-radius: 1rem;
     font-size: 24px;
@@ -90,6 +90,11 @@ ul {
     height: 2px;
     border: solid 2px white;
     width: 80%;
+}
+
+#canvas-controls>button {
+    margin-top: 3rem;
+    margin-left: 1rem;
 }
 
 #profile {
