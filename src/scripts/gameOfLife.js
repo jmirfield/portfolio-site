@@ -1,7 +1,13 @@
-export class Cell {
+'use strict';
+
+class Cell {
     #isAlive;
-    constructor(isAlive = null) {
-        this.#isAlive = !isAlive ? Math.random() > .9 : isAlive;
+    constructor(isAlive = null, debug = false) {
+        if (debug) {
+            this.#isAlive = isAlive;
+        } else {
+            this.#isAlive = Math.random() > .9 ? true : false;
+        }
     }
 
     get isAlive() {
@@ -54,7 +60,7 @@ class GameOfLife {
     }
 
     insertCell(i, t, bool) {
-        const cell = new Cell(bool);
+        const cell = new Cell(bool, true);
         this.#matrix[i][t] = cell;
         return cell;
     }

@@ -1,3 +1,5 @@
+'use strict';
+
 const setHeaderEvents = () => {
     const header = document.querySelector('.header');
     const upArrow = document.querySelector('.up');

@@ -1,5 +1,5 @@
 import Typewriter from "./typewriter";
-// import Particles from "./particles";
+import Particles from "./particles";
 import GameOfLife from './gameOfLife';
 import '../styles/mainCanvas.css';
 
