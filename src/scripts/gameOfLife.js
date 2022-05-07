@@ -1,7 +1,7 @@
-class Cell {
+export class Cell {
     #isAlive;
-    constructor() {
-        this.#isAlive = Math.random() > .95;
+    constructor(isAlive = null) {
+        this.#isAlive = !isAlive ? Math.random() > .9 : isAlive;
     }
 
     get isAlive() {
@@ -27,6 +27,7 @@ class GameOfLife {
     #height;
     #matrix;
     #debug;
+    #cache;
     constructor(canvas, n, debug = false) {
         this.#canvas = canvas;
         this.#ctx = canvas.getContext('2d');
@@ -36,7 +37,8 @@ class GameOfLife {
         this.#height = canvas.height / n;
         this.#matrix = Array(n).fill().map(row => Array(n));
         this.#debug = debug;
-        this.startGame();
+        this.#cache = {};
+        if (!debug) this.startGame();
     }
 
     startGame() {
@@ -49,6 +51,12 @@ class GameOfLife {
 
     get matrix() {
         return this.#matrix
+    }
+
+    insertCell(i, t, bool) {
+        const cell = new Cell(bool);
+        this.#matrix[i][t] = cell;
+        return cell;
     }
 
     #drawGrid() {
@@ -69,46 +77,47 @@ class GameOfLife {
 
     #fillOne(x, y) {
         const c = this.#ctx;
-        const canvas = this.#canvas;
         c.beginPath();
         c.fillRect(x * this.#width, y * this.#height, this.#width, this.#height);
         c.stroke();
     }
 
-    #matrixCheck() {
-        const initial = this.#matrix.map((arr) => {
-            return arr.slice();
-        });
-
-
+    matrixCheck() {
+        const toKill = [];
+        const toResurrect = [];
         for (let i = 0; i < this.#rows; i++) {
             for (let t = 0; t < this.#cols; t++) {
-                const count = this.#checkNeighbors(i, t, initial);
-                if (count < 2 || count > 3) this.#matrix[i][t].kill()
-                if (count === 3) this.#matrix[i][t].resurrect()
+                const count = this.#checkNeighbors(i, t);
+                if (count < 2 || count > 3) {
+                    toKill.push(this.#matrix[i][t])
+                }
+                if (count === 3) {
+                    toResurrect.push(this.#matrix[i][t])
+                };
             }
         }
+        toKill.forEach(cell => cell.kill());
+        toResurrect.forEach(cell => cell.resurrect());
     }
 
     #cellHelper(x, y) {
-        return this.#matrix[x][y].isAlive ? 1 : 0;
+        try {
+            return this.#matrix[x][y].isAlive ? 1 : 0;
+        } catch (e) {
+            return 0
+        }
     }
 
-    #checkNeighbors(x, y, matrix) {
+    #checkNeighbors(x, y) {
         let count = 0;
-        try {
-            count += this.#cellHelper(x-1, y-1)
-            count += this.#cellHelper(x, y-1)
-            count += this.#cellHelper(x+1, y-1)
-            count += this.#cellHelper(x-1, y)
-            count += this.#cellHelper(x+1, y)
-            count += this.#cellHelper(x-1, y+1)
-            count += this.#cellHelper(x, y+1)
-            count += this.#cellHelper(x+1, y+1)
-        } catch (e) {
-            //Catching indices outside of matrix, will make cleaner solution in due time
-        }
-
+        count += this.#cellHelper(x - 1, y - 1)
+        count += this.#cellHelper(x, y - 1)
+        count += this.#cellHelper(x + 1, y - 1)
+        count += this.#cellHelper(x - 1, y)
+        count += this.#cellHelper(x + 1, y)
+        count += this.#cellHelper(x - 1, y + 1)
+        count += this.#cellHelper(x, y + 1)
+        count += this.#cellHelper(x + 1, y + 1)
         return count;
     }
 
@@ -128,7 +137,7 @@ class GameOfLife {
         if (this.#debug) {
             this.#drawGrid();
         }
-        this.#matrixCheck();
+        this.matrixCheck();
         this.#drawCells();
     }
 

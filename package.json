@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "dev": "npx webpack serve -c webpack.dev"
+    "dev": "npx webpack serve -c webpack.dev",
+    "test": "jest"
   },
   "babel": {
     "presets": [
@@ -21,6 +22,9 @@
     "css-loader": "^6.7.1",
     "html-loader": "^3.1.0",
     "html-webpack-plugin": "^5.5.0",
+    "jest": "^28.1.0",
+    "jest-canvas-mock": "^2.4.0",
+    "jest-environment-jsdom": "^28.1.0",
     "postcss": "^8.4.13",
     "postcss-loader": "^6.2.1",
     "style-loader": "^3.3.1",
