@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
+    "build": "npx webpack -c webpack.prod",
     "dev": "npx webpack serve -c webpack.dev",
     "test": "jest"
   },
@@ -19,6 +20,7 @@
     "@babel/preset-env": "^7.17.10",
     "autoprefixer": "^10.4.7",
     "babel-loader": "^8.2.5",
+    "copy-webpack-plugin": "^10.2.4",
     "css-loader": "^6.7.1",
     "html-loader": "^3.1.0",
     "html-webpack-plugin": "^5.5.0",
