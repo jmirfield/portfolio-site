@@ -56,11 +56,18 @@
     height: 100%;
 }
 
-@media (hover:none) or (pointer: fine) {
+/* @media (hover:none) or (pointer: fine) or (p) {
     .header>a:hover {
         animation: bob .25s infinite;
     }
-}
+} */
+
+@supports not (-webkit-touch-callout: none) {
+    /* CSS for other than iOS devices */ 
+    .header>a:hover {
+        animation: bob .25s infinite;
+    }
+  }
 
 @keyframes slidein {
     from {

@@ -1,5 +1,6 @@
 import Typewriter from "./typewriter";
 import Particles from "./particles";
+import GameOfLife from './gameOfLife';
 import '../styles/mainCanvas.css';
 
 const mainCanvas = () => {
@@ -14,9 +15,9 @@ const mainCanvas = () => {
         "Back-End Developer"
     ];
 
-    const typewriter = new Typewriter(TYPED_MESSAGES, canvas);
-    const particles = new Particles(50, canvas);
-
+    const typewriter = new Typewriter(canvas, TYPED_MESSAGES);
+    const particles = new Particles(canvas, 50);
+    const gameOfLife = new GameOfLife(canvas, 100);
 
     const init = () => {
         requestAnimationFrame(animate);
@@ -24,8 +25,9 @@ const mainCanvas = () => {
 
     const animate = () => {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
+        gameOfLife.draw();
         typewriter.draw();
-        particles.draw();
+        // particles.draw();
         setTimeout(() => requestAnimationFrame(animate), 100)
     }
 

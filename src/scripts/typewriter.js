@@ -1,21 +1,23 @@
 'use strict';
 
 class Typewriter {
+    #context;
+    #ctx;
     #messages;
     #position;
     #index;
     #text;
     #stage;
     #delay;
-    #canvas;
-    constructor(messages, canvas) {
+    constructor(context, messages) {
+        this.#context = context;
+        this.#ctx = context.getContext('2d');
         this.#messages = messages;
         this.#text = "";
         this.#index = 0;
         this.#position = 0;
         this.#stage = 0;
         this.#delay = 0;
-        this.#canvas = canvas;
     }
 
     
@@ -27,12 +29,11 @@ class Typewriter {
     }
     
     draw() {
-        const ctx = this.#canvas.getContext('2d');
-        ctx.fillText(this.text, this.#canvas.width / 2, this.#canvas.height / 2 + 120);
-        ctx.textBaseline = 'middle';
-        ctx.textAlign = 'center';
-        ctx.font = '44px VT323';
-        ctx.fillStyle = 'white';
+        this.#ctx.fillText(this.text, this.#context.width / 2, this.#context.height / 2 + 120);
+        this.#ctx.textBaseline = 'middle';
+        this.#ctx.textAlign = 'center';
+        this.#ctx.font = '44px VT323';
+        this.#ctx.fillStyle = 'white';
         this.#next()
     }
     
