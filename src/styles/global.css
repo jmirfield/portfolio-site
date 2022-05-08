@@ -85,6 +85,7 @@ ul {
     background-color: #417ec1;
     border-radius: .5rem;
     border: solid 1px white;
+    z-index: 4;
 }
 
 .container__left, .container__right {

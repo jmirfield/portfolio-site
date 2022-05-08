@@ -2,7 +2,6 @@
     display: block;
     position: absolute;
     background-color: #417ec1;
-    z-index: 1;
 }
 
 .header {
@@ -54,11 +53,13 @@
     align-items: center;
     justify-content: center;
     height: 100%;
+    z-index: 1;
 }
 
 .main > section {
+    margin-top: 5rem;
     height: 75%;
-    z-index: 3;
+    z-index: 2;
 }
 
 /* @media (hover:none) or (pointer: fine) or (p) {
