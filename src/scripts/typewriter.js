@@ -1,7 +1,7 @@
 'use strict';
 
 class Typewriter {
-    #context;
+    #canvas;
     #ctx;
     #messages;
     #position;
@@ -9,9 +9,9 @@ class Typewriter {
     #text;
     #stage;
     #delay;
-    constructor(context, messages) {
-        this.#context = context;
-        this.#ctx = context.getContext('2d');
+    constructor(canvas, messages) {
+        this.#canvas = canvas;
+        this.#ctx = canvas.getContext('2d');
         this.#messages = messages;
         this.#text = "";
         this.#index = 0;
@@ -29,13 +29,14 @@ class Typewriter {
     }
 
     draw() {
+        const font = this.#canvas.width > 768 ? '64px VT323' : '44px VT323';
         this.#ctx.globalAlpha = 1;
-        this.#ctx.font = '44px VT323';
+        this.#ctx.font = font;
         this.#ctx.fillStyle = 'white';
         this.#ctx.textBaseline = 'middle';
         this.#ctx.textAlign = 'center';
-        this.#ctx.fillText(this.text, this.#context.width / 2, this.#context.height / 2 + 50);
-        this.#ctx.strokeText(this.text, this.#context.width / 2, this.#context.height / 2 + 50);
+        this.#ctx.fillText(this.text, this.#canvas.width / 2, this.#canvas.height / 2);
+        this.#ctx.strokeText(this.text, this.#canvas.width / 2, this.#canvas.height / 2);
         this.#next()
     }
 
