@@ -60,6 +60,10 @@ button {
     color: #2c80da;
 }
 
+button:hover {
+    background-color: rgb(192, 190, 190);
+}
+
 ul {
     margin-top: 1rem;
     list-style-position: inside;
