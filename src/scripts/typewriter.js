@@ -34,8 +34,8 @@ class Typewriter {
         this.#ctx.fillStyle = 'white';
         this.#ctx.textBaseline = 'middle';
         this.#ctx.textAlign = 'center';
-        this.#ctx.fillText(this.text, this.#context.width / 2, this.#context.height / 2 + 75);
-        this.#ctx.strokeText(this.text, this.#context.width / 2, this.#context.height / 2 + 75);
+        this.#ctx.fillText(this.text, this.#context.width / 2, this.#context.height / 2 + 50);
+        this.#ctx.strokeText(this.text, this.#context.width / 2, this.#context.height / 2 + 50);
         this.#next()
     }
 
