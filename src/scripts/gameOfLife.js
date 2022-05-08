@@ -44,7 +44,7 @@ class GameOfLife {
         this.#matrix = Array(n).fill().map(row => Array(n));
         this.#debug = debug;
         this.#cache = {};
-        if (!debug) this.startGame();
+        this.startGame();
     }
 
     startGame() {
