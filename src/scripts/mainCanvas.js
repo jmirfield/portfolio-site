@@ -18,11 +18,13 @@ const mainCanvas = () => {
 
     const typewriter = new Typewriter(canvas, TYPED_MESSAGES);
 
-    const gameOfLifeWorker = new Worker(new URL('../workers/game-worker.js', import.meta.url));
     const gameOfLife = new GameOfLife(150);
+    const gameOfLifeRenderer = new GameRenderer(gameOfLife, canvas);
+
+    //Worker handles all logic
+    const gameOfLifeWorker = new Worker(new URL('../workers/game-worker.js', import.meta.url));
     gameOfLifeWorker.postMessage({ status: 'UPDATE', matrix: gameOfLife.matrix });
     gameOfLifeWorker.onmessage = ({ data }) => { gameOfLife.updateMatrix(data) };
-    const gameOfLifeRenderer = new GameRenderer(gameOfLife, canvas);
 
     const toggle = document.getElementById('toggle');
     const reset = document.getElementById('reset');

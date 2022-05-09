@@ -1,38 +1,26 @@
 'use strict';
 
 export class GameOfLife {
-    #rows;
-    #cols;
     #matrix;
     constructor(n) {
-        this.#rows = n;
-        this.#cols = n;
         this.#matrix = Array(n).fill().map(row => Array(n));
         this.startGame();
     }
-    
+
     startGame() {
-        for (let i = 0; i < this.#rows; i++) {
-            for (let t = 0; t < this.#cols; t++) {
+        for (let i = 0; i < this.#matrix.length; i++) {
+            for (let t = 0; t < this.#matrix.length; t++) {
                 this.#matrix[i][t] = Math.random() > .9 ? true : false;
             }
         }
     }
-    
+
     reset() {
         this.startGame();
     }
 
     get matrix() {
-        return this.#matrix
-    }
-
-    get rows() {
-        return this.#rows;
-    }
-
-    get cols() {
-        return this.#cols;
+        return this.#matrix;
     }
 
     //For testing purposes
@@ -69,22 +57,24 @@ export class GameOfLife {
     }
 
     //Logic for game
-    checkMatrix() {
+    static checkMatrix(matrix) {
+        const updated = matrix;
         const toKill = [];
         const toResurrect = [];
-        for (let i = 0; i < this.#rows; i++) {
-            for (let t = 0; t < this.#cols; t++) {
-                const count = GameOfLife.checkNeighbors(i, t, this.#matrix);
+        for (let i = 0; i < matrix.length; i++) {
+            for (let t = 0; t < matrix.length; t++) {
+                const count = GameOfLife.checkNeighbors(i, t, matrix);
                 if (count < 2 || count > 3) {
-                    if (this.#matrix[i][t]) toKill.push({ i, t });
+                    if (matrix[i][t]) toKill.push({ i, t });
                 }
                 if (count === 3) {
-                    if (!this.#matrix[i][t]) toResurrect.push({ i, t });
+                    if (!matrix[i][t]) toResurrect.push({ i, t });
                 };
             }
         }
-        toKill.forEach(({ i, t }) => this.#matrix[i][t] = false);
-        toResurrect.forEach(({ i, t }) => this.#matrix[i][t] = true);
+        toKill.forEach(({ i, t }) => updated[i][t] = false);
+        toResurrect.forEach(({ i, t }) => updated[i][t] = true);
+        return updated;
     }
 
 
@@ -95,8 +85,6 @@ export class GameRenderer {
     #gameOfLife;
     #canvas;
     #ctx;
-    #rows;
-    #cols;
     #width;
     #height;
     #debug;
@@ -104,10 +92,8 @@ export class GameRenderer {
         this.#gameOfLife = gameOfLife;
         this.#canvas = canvas;
         this.#ctx = canvas.getContext('2d');
-        this.#rows = gameOfLife.rows;
-        this.#cols = gameOfLife.cols;
-        this.#width = canvas.width / gameOfLife.cols;
-        this.#height = canvas.height / gameOfLife.rows;
+        this.#width = canvas.width / gameOfLife.matrix.length;
+        this.#height = canvas.height / gameOfLife.matrix.length;
         this.#debug = debug;
     }
 
@@ -121,7 +107,7 @@ export class GameRenderer {
     #drawGrid() {
         const c = this.#ctx;
         const canvas = this.#canvas;
-        for (let i = 0; i < this.#rows; i++) {
+        for (let i = 0; i < this.#gameOfLife.matrix.length; i++) {
             c.beginPath();
             c.moveTo(this.#width * i, 0);
             c.lineTo(this.#width * i, canvas.height);
@@ -135,8 +121,8 @@ export class GameRenderer {
     }
 
     #drawCells() {
-        for (let i = 0; i < this.#rows; i++) {
-            for (let t = 0; t < this.#cols; t++) {
+        for (let i = 0; i < this.#gameOfLife.matrix.length; i++) {
+            for (let t = 0; t < this.#gameOfLife.matrix.length; t++) {
                 if (this.#gameOfLife.matrix[i][t]) {
                     this.#fillOne(i, t)
                 }
