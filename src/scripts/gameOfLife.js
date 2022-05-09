@@ -62,8 +62,7 @@ export class GameOfLife {
 
     static cellHelper(x, y, matrix) {
         try {
-            if (matrix) return matrix[x][y] ? 1 : 0;
-            return this.#matrix[x][y].isAlive ? 1 : 0;
+            return matrix[x][y] ? 1 : 0;
         } catch (e) {
             return 0
         }
