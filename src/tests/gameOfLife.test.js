@@ -1,16 +1,10 @@
 import 'jest-canvas-mock';
-import GameOfLife from "../scripts/gameOfLife";
-
-let canvas;
-
-beforeEach(() => {
-    canvas = document.createElement('canvas');
-})
+import { GameOfLife } from "../scripts/gameOfLife";
 
 describe('game of life', () => {
     it('should follow rules and only corners should be alive if every space is alive', () => {
         const n = 4;
-        const game1 = new GameOfLife(canvas, n);
+        const game1 = new GameOfLife(n);
         for (let i = 0; i < n; i++) {
             for (let t = 0; t < n; t++) {
                 game1.insertCell(i, t, true);
@@ -25,7 +19,7 @@ describe('game of life', () => {
 
     it('should follow rules and no corner should be alive if every other space is alive', () => {
         const n = 4;
-        const game2 = new GameOfLife(canvas, n);
+        const game2 = new GameOfLife(n);
         for (let i = 0; i < n; i++) {
             for (let t = 0; t < n; t++) {
                 if (t % 2) {
@@ -47,7 +41,7 @@ describe('game of life', () => {
 
     it('should follow rules and nothing should be alive since nothing was alive', () => {
         const n = 4;
-        const game3 = new GameOfLife(canvas, n);
+        const game3 = new GameOfLife(n);
         for (let i = 0; i < n; i++) {
             for (let t = 0; t < n; t++) {
                 game3.insertCell(i, t, false);

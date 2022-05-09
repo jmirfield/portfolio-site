@@ -1,6 +1,6 @@
 import Typewriter from "./typewriter";
 import Particles from "./particles";
-import GameOfLife from './gameOfLife';
+import { GameOfLife, GameRenderer } from './gameOfLife';
 import '../styles/mainCanvas.css';
 
 const mainCanvas = () => {
@@ -17,11 +17,16 @@ const mainCanvas = () => {
     ];
 
     const typewriter = new Typewriter(canvas, TYPED_MESSAGES);
-    // const particles = new Particles(canvas, 50);
-    const gameOfLife = new GameOfLife(canvas, 100);
+
+    const gameOfLifeWorker = new Worker(new URL('../workers/game-worker.js', import.meta.url));
+    const gameOfLife = new GameOfLife(100);
+    gameOfLifeWorker.postMessage({ status: 'UPDATE', matrix: gameOfLife.matrix });
+    gameOfLifeWorker.onmessage = ({ data }) => { gameOfLife.updateMatrix(data) };
+    const gameOfLifeRenderer = new GameRenderer(gameOfLife, canvas);
 
     const toggle = document.getElementById('toggle');
     const reset = document.getElementById('reset');
+
     let show = true;
 
     toggle.addEventListener('click', (e) => {
@@ -38,9 +43,10 @@ const mainCanvas = () => {
 
     const animate = () => {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
-        if (show) gameOfLife.draw();
+        if (show) gameOfLifeRenderer.draw();
         typewriter.draw();
         // particles.draw();
+        gameOfLifeWorker.postMessage({ status: 'UPDATE', matrix: gameOfLife.matrix });
         setTimeout(() => requestAnimationFrame(animate), 100)
     }
 
