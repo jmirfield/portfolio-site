@@ -95,10 +95,10 @@ class GameOfLife {
             for (let t = 0; t < this.#cols; t++) {
                 const count = this.#checkNeighbors(i, t);
                 if (count < 2 || count > 3) {
-                    toKill.push(this.#matrix[i][t])
+                    if(this.#matrix.isAlive)toKill.push(this.#matrix[i][t]);
                 }
                 if (count === 3) {
-                    toResurrect.push(this.#matrix[i][t])
+                    if(!this.#matrix.isAlive)toResurrect.push(this.#matrix[i][t]);
                 };
             }
         }
