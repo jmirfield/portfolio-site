@@ -56,9 +56,7 @@ export class GameOfLife {
     }
 
     insertCell(i, t, bool) {
-        const cell = new Cell(bool, true);
-        this.#matrix[i][t] = cell;
-        return cell;
+        this.#matrix[i][t] = bool;
     }
 
 

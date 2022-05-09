@@ -10,11 +10,11 @@ describe('game of life', () => {
                 game1.insertCell(i, t, true);
             }
         }
-        game1.matrixCheck();
-        expect(game1.matrix[0][0].isAlive).toBe(true);
-        expect(game1.matrix[0][n - 1].isAlive).toBe(true);
-        expect(game1.matrix[n - 1][0].isAlive).toBe(true);
-        expect(game1.matrix[n - 1][n - 1].isAlive).toBe(true);
+        game1.checkMatrix();
+        expect(game1.matrix[0][0]).toBe(true);
+        expect(game1.matrix[0][n - 1]).toBe(true);
+        expect(game1.matrix[n - 1][0]).toBe(true);
+        expect(game1.matrix[n - 1][n - 1]).toBe(true);
     })
 
     it('should follow rules and no corner should be alive if every other space is alive', () => {
@@ -32,11 +32,11 @@ describe('game of life', () => {
             }
         }
 
-        game2.matrixCheck();
-        expect(game2.matrix[0][0].isAlive).toBe(false);
-        expect(game2.matrix[0][n - 1].isAlive).toBe(false);
-        expect(game2.matrix[n - 1][0].isAlive).toBe(false);
-        expect(game2.matrix[n - 1][n - 1].isAlive).toBe(false);
+        game2.checkMatrix();
+        expect(game2.matrix[0][0]).toBe(false);
+        expect(game2.matrix[0][n - 1]).toBe(false);
+        expect(game2.matrix[n - 1][0]).toBe(false);
+        expect(game2.matrix[n - 1][n - 1]).toBe(false);
     })
 
     it('should follow rules and nothing should be alive since nothing was alive', () => {
@@ -47,9 +47,10 @@ describe('game of life', () => {
                 game3.insertCell(i, t, false);
             }
         }
+        game3.checkMatrix();
         for (let i = 0; i < n; i++) {
             for (let t = 0; t < n; t++) {
-                expect(game3.matrix[i][t].isAlive).toBe(false);
+                expect(game3.matrix[i][t]).toBe(false);
             }
         }
     })

@@ -43,10 +43,12 @@ const mainCanvas = () => {
 
     const animate = () => {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
-        if (show) gameOfLifeRenderer.draw();
+        if (show) {
+            gameOfLifeRenderer.draw();
+            gameOfLifeWorker.postMessage({ status: 'UPDATE', matrix: gameOfLife.matrix });
+        }
         typewriter.draw();
         // particles.draw();
-        gameOfLifeWorker.postMessage({ status: 'UPDATE', matrix: gameOfLife.matrix });
         setTimeout(() => requestAnimationFrame(animate), 100)
     }
 
