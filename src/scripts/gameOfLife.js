@@ -1,29 +1,5 @@
 'use strict';
 
-// class Cell {
-//     #isAlive;
-//     constructor(isAlive = null, debug = false) {
-//         if (debug) {
-//             this.#isAlive = isAlive;
-//         } else {
-//             this.#isAlive = Math.random() > .9 ? true : false;
-//         }
-//     }
-
-//     get isAlive() {
-//         return this.#isAlive;
-//     }
-
-//     kill() {
-//         this.#isAlive = false;
-//     }
-
-//     resurrect() {
-//         this.#isAlive = true;
-//     }
-// }
-
-
 export class GameOfLife {
     #rows;
     #cols;
@@ -34,13 +10,17 @@ export class GameOfLife {
         this.#matrix = Array(n).fill().map(row => Array(n));
         this.startGame();
     }
-
+    
     startGame() {
         for (let i = 0; i < this.#rows; i++) {
             for (let t = 0; t < this.#cols; t++) {
                 this.#matrix[i][t] = Math.random() > .9 ? true : false;
             }
         }
+    }
+    
+    reset() {
+        this.startGame();
     }
 
     get matrix() {
@@ -55,11 +35,12 @@ export class GameOfLife {
         return this.#cols;
     }
 
+    //For testing purposes
     insertCell(i, t, bool) {
         this.#matrix[i][t] = bool;
     }
 
-
+    //Static helper function to see if cell is dead or alive
     static cellHelper(x, y, matrix) {
         try {
             return matrix[x][y] ? 1 : 0;
@@ -68,6 +49,7 @@ export class GameOfLife {
         }
     }
 
+    //Static helper function which checks all surrounding cells utilizing cellHelper function
     static checkNeighbors(x, y, matrix) {
         let count = 0;
         count += this.cellHelper(x - 1, y - 1, matrix)
@@ -81,10 +63,12 @@ export class GameOfLife {
         return count;
     }
 
+    //For rehydrating matrix sent from worker
     updateMatrix(matrix) {
         this.#matrix = matrix;
     }
 
+    //Logic for game
     checkMatrix() {
         const toKill = [];
         const toResurrect = [];
@@ -104,9 +88,6 @@ export class GameOfLife {
     }
 
 
-    reset() {
-        this.startGame();
-    }
 
 }
 
