@@ -145,7 +145,7 @@ export class GameRenderer {
     }
 
     draw() {
-        this.#ctx.globalAlpha = .5;
+        this.#ctx.globalAlpha = .25;
         if (this.#debug) {
             this.#drawGrid();
         }

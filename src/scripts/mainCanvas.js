@@ -52,7 +52,7 @@ const mainCanvas = () => {
         setTimeout(() => requestAnimationFrame(animate), 100)
     }
 
-    init()
+    init();
 
     window.onresize = () => {
         canvas.width = window.innerWidth;
