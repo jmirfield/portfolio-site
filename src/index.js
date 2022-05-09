@@ -4,6 +4,7 @@ import mainCanvas from './scripts/mainCanvas';
 import setHeaderEvents from './scripts/headerEvents';
 
 document.getElementById('resume').setAttribute('href', resume);
+document.body.style.visibility = 'visible';
 
 window.onload = () => {
     mainCanvas()
