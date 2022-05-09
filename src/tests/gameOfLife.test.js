@@ -10,7 +10,7 @@ describe('game of life', () => {
                 game1.insertCell(i, t, true);
             }
         }
-        game1.checkMatrix();
+        game1.updateMatrix(GameOfLife.checkMatrix(game1.matrix));
         expect(game1.matrix[0][0]).toBe(true);
         expect(game1.matrix[0][n - 1]).toBe(true);
         expect(game1.matrix[n - 1][0]).toBe(true);
@@ -32,7 +32,7 @@ describe('game of life', () => {
             }
         }
 
-        game2.checkMatrix();
+        game2.updateMatrix(GameOfLife.checkMatrix(game2.matrix));
         expect(game2.matrix[0][0]).toBe(false);
         expect(game2.matrix[0][n - 1]).toBe(false);
         expect(game2.matrix[n - 1][0]).toBe(false);
@@ -47,7 +47,7 @@ describe('game of life', () => {
                 game3.insertCell(i, t, false);
             }
         }
-        game3.checkMatrix();
+        game3.updateMatrix(GameOfLife.checkMatrix(game3.matrix));
         for (let i = 0; i < n; i++) {
             for (let t = 0; t < n; t++) {
                 expect(game3.matrix[i][t]).toBe(false);
