@@ -17,7 +17,6 @@ self.onmessage = ({ data }) => {
     }
     toKill.forEach(({ i, t }) => data.matrix[i][t] = false);
     toResurrect.forEach(({ i, t }) => data.matrix[i][t] = true);
-    console.log(data.matrix)
     self.postMessage(data.matrix);
   };
 };
