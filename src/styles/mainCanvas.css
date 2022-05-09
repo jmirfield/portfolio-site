@@ -63,6 +63,19 @@
     z-index: 2;
 }
 
+#canvas-controls>button {
+    margin-top: 3rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+
+@media screen and (max-width: 768px) {
+    #canvas-controls {
+        display: flex;
+        justify-content: space-around;
+    }
+}
+
 /* @media (hover:none) or (pointer: fine) or (p) {
     .header>a:hover {
         animation: bob .25s infinite;
