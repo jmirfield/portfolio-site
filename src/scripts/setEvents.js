@@ -1,6 +1,6 @@
 'use strict';
 
-const setHeaderEvents = () => {
+const setEvents = () => {
     const header = document.querySelector('.header');
     const upArrow = document.querySelector('.up');
 
@@ -16,4 +16,4 @@ const setHeaderEvents = () => {
     })
 }
 
-export default setHeaderEvents;
+export default setEvents;
