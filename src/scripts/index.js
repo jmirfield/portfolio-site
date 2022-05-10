@@ -20,7 +20,7 @@ const mainCanvas = () => {
 
     // const particles = new Particles(canvas, 100);
 
-    const gameOfLife = new GameOfLife(150);
+    const gameOfLife = new GameOfLife(100);
     const gameOfLifeRenderer = new GameRenderer(gameOfLife, canvas);
 
     //Worker handles all logic

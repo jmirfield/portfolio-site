@@ -99,7 +99,8 @@ export class GameRenderer {
 
     #fillOne(x, y) {
         const c = this.#ctx;
-        c.fillRect(x * this.#width, y * this.#height, this.#width, this.#height);
+        // c.fillRect(x * this.#width, y * this.#height, this.#width, this.#height);
+        c.roundRect(x * this.#width, y * this.#height, this.#width, this.#height, 5, true);
     }
 
     #drawGrid() {
@@ -119,8 +120,8 @@ export class GameRenderer {
     }
 
     #drawCells() {
-        const c = this.#ctx;
-        c.beginPath();
+        // const c = this.#ctx;
+        // c.beginPath();
         for (let i = 0; i < this.#gameOfLife.matrix.length; i++) {
             for (let t = 0; t < this.#gameOfLife.matrix.length; t++) {
                 if (this.#gameOfLife.matrix[i][t]) {
@@ -128,7 +129,7 @@ export class GameRenderer {
                 }
             }
         }
-        c.stroke();
+        // c.stroke();
     }
 
     draw() {
