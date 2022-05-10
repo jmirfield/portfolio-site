@@ -57,7 +57,7 @@
     z-index: 1;
 }
 
-.main > section {
+.main>section {
     margin-top: 5rem;
     height: 75%;
     z-index: 2;
@@ -71,15 +71,6 @@
 
 #canvas-controls>button {
     margin-top: 3rem;
-    margin-left: 1rem;
-    margin-right: 1rem;
-}
-
-@media screen and (max-width: 768px) {
-    #canvas-controls {
-        display: flex;
-        justify-content: space-around;
-    }
 }
 
 /* @media (hover:none) or (pointer: fine) or (p) {
@@ -89,11 +80,12 @@
 } */
 
 @supports not (-webkit-touch-callout: none) {
-    /* CSS for other than iOS devices */ 
+
+    /* CSS for other than iOS devices */
     .header>a:hover {
         animation: bob .25s infinite;
     }
-  }
+}
 
 @keyframes slidein {
     from {
@@ -145,7 +137,20 @@
 }
 
 @media screen and (max-width: 768px) {
+
+    #canvas-controls {
+        display: inline-flex;
+        justify-content: space-around;
+        width: 100%;
+    }
+
     .up {
         display: none;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    #canvas-controls>button {
+        margin-left: 2rem;
     }
 }
