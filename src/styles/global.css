@@ -117,7 +117,7 @@ ul {
 }
 
 
-#projects {
+#portfolio {
     flex-direction: column;
 }
 
@@ -161,7 +161,7 @@ ul {
         padding-top: 1rem;
     }
 
-    #projects > section {
+    #portfolio > section {
         padding: 1rem;
     }
 
@@ -203,7 +203,7 @@ ul {
         font-size: 120%;
     }
 
-    #projects > section {
+    #portfolio > section {
         width: 70%;
         display: flex;
         flex-wrap: wrap;
