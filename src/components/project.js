@@ -15,6 +15,7 @@ customElements.define('my-project',
 
             const img = document.createElement('img');
             img.setAttribute('src', this.getAttribute('src'));
+            img.setAttribute('loading', 'lazy');
 
             const section = document.createElement('section');
             section.setAttribute('class', 'footer');
