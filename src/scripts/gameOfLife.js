@@ -4,10 +4,10 @@ export class GameOfLife {
     #matrix;
     constructor(n) {
         this.#matrix = Array(n).fill().map(row => Array(n));
-        this.startGame();
+        this.#startGame();
     }
 
-    startGame() {
+    #startGame() {
         for (let i = 0; i < this.#matrix.length; i++) {
             for (let t = 0; t < this.#matrix.length; t++) {
                 this.#matrix[i][t] = Math.random() > .75 ? true : false;
@@ -16,7 +16,7 @@ export class GameOfLife {
     }
 
     reset() {
-        this.startGame();
+        this.#startGame();
     }
 
     get matrix() {
@@ -99,9 +99,7 @@ export class GameRenderer {
 
     #fillOne(x, y) {
         const c = this.#ctx;
-        c.beginPath();
-        c.fillRect(x * this.#width, y * this.#height, this.#width, this.#height);
-        c.stroke();
+        c.roundRect(x * this.#width, y * this.#height, this.#width, this.#height, { upperLeft: 5, upperRight: 5, lowerLeft: 5, lowerRight: 5 }, true)
     }
 
     #drawGrid() {
