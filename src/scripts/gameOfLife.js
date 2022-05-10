@@ -10,7 +10,7 @@ export class GameOfLife {
     startGame() {
         for (let i = 0; i < this.#matrix.length; i++) {
             for (let t = 0; t < this.#matrix.length; t++) {
-                this.#matrix[i][t] = Math.random() > .9 ? true : false;
+                this.#matrix[i][t] = Math.random() > .75 ? true : false;
             }
         }
     }

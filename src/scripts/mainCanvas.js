@@ -18,6 +18,8 @@ const mainCanvas = () => {
 
     const typewriter = new Typewriter(canvas, TYPED_MESSAGES);
 
+    // const particles = new Particles(canvas, 100);
+
     const gameOfLife = new GameOfLife(150);
     const gameOfLifeRenderer = new GameRenderer(gameOfLife, canvas);
 

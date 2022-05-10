@@ -1,13 +1,13 @@
 'use strict';
 
 class Particles {
-    #context;
+    #canvas;
     #ctx;
     #list;
     #max;
-    constructor(context, n) {
-        this.#context = context;
-        this.#ctx = context.getContext('2d');
+    constructor(canvas, n) {
+        this.#canvas = canvas;
+        this.#ctx = canvas.getContext('2d');
         this.#list = new Array(n);
         this.#max = screen.width > 768 ? 5000 : 2000;
         this.mouse = {
@@ -21,17 +21,17 @@ class Particles {
 
     #init() {
         for (let i = 0; i < this.#list.length; i++) {
-            this.#list[i] = new Particle(Math.floor(Math.random() * this.#context.width), Math.floor(Math.random() * this.#context.height), this.#list, this.#max);
+            this.#list[i] = new Particle(Math.floor(Math.random() * this.#canvas.width), Math.floor(Math.random() * this.#canvas.height), this.#list, this.#max);
         }
-        const rect = this.#context.getBoundingClientRect()
-        this.#context.addEventListener('mousedown', (e) => {
+        const rect = this.#canvas.getBoundingClientRect()
+        this.#canvas.addEventListener('mousedown', (e) => {
             this.mouse = {
                 down: true,
                 x: e.clientX,
                 y: e.clientY - rect.top
             }
         })
-        this.#context.addEventListener('mouseup', (e) => {
+        this.#canvas.addEventListener('mouseup', (e) => {
             this.mouse = {
                 down: false,
                 x: undefined,
@@ -39,7 +39,7 @@ class Particles {
             };
         })
 
-        this.#context.addEventListener('mousemove', (e) => {
+        this.#canvas.addEventListener('mousemove', (e) => {
             this.mouse = {
                 ...this.mouse,
                 x: e.clientX,
