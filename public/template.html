@@ -14,13 +14,39 @@
 <body style="visibility: hidden;">
     <menu class="header">
         <a href="#about">About</a>
-        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
         <a href="#contact">Contact</a>
         <a id="resume">Resume</a>
     </menu>
 
     <template id="my-project">
-        <h1>hello</h1>
+        <style>
+            h3 {
+                font-size: 24px;
+                margin-bottom: .5rem;
+            }
+
+            img {
+                border-radius: 10px;
+                border: solid 1px white;
+            }
+
+            a {
+                color: white;
+                font-size: 24px;
+                text-decoration: none;
+            }
+
+            a:hover {
+                color: rgb(192, 190, 190);
+            }
+
+            .footer {
+                display: flex;
+                justify-content: space-around;
+                margin-bottom: 1rem;
+            }
+        </style>
     </template>
 
     <svg class="up" style="display: none;" version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 524 527"
@@ -75,13 +101,21 @@
         </section>
     </div>
     <div class="container">
-        <section id="experience">
+        <section id="projects">
             <h2>Portfolio</h2>
             <div class="line"></div>
             <section>
-                <my-project src="test"></my-project>
-                <my-project></my-project>
-                <my-project></my-project>
+                <my-project title="Twitter Clone - Chirpy"
+                    src="https://res.cloudinary.com/dg9y2vaeg/image/upload/c_fit,h_275,w_400/v1652198838/portfolio/HomePageDemo_hcduhf.png"
+                    demo="https://chirpy-clone-twitter.herokuapp.com/" github="https://github.com/jmirfield/Chirpy-Twitter-Clone">
+                </my-project>
+                <my-project title="PokeSearch"
+                    src="https://res.cloudinary.com/dg9y2vaeg/image/upload/c_scale,h_275,w_400/v1652201433/portfolio/PokeDemo_aebr2d.png"
+                    demo="https://pokesearch-mirf.netlify.app/" github="https://github.com/jmirfield/PokeSearch">
+                </my-project>
+                <my-project title="Material UI - Example Clone"
+                    src="https://res.cloudinary.com/dg9y2vaeg/image/upload/c_scale,h_275,w_400/v1652201874/portfolio/demo_q0visi.png"
+                    demo="https://muiclone.herokuapp.com/dashboard/" github="https://github.com/jmirfield/MUI-React-Dashboard-Clone"></my-project>
             </section>
         </section>
     </div>

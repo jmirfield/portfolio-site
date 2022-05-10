@@ -117,13 +117,10 @@ ul {
 }
 
 
-#experience {
+#projects {
     flex-direction: column;
 }
 
-#experience>h2 {
-    margin-top: 2rem;
-}
 
 @media screen and (max-width: 768px) {
     h1 {
@@ -201,6 +198,13 @@ ul {
 
     li {
         font-size: 120%;
+    }
+
+    #projects > section {
+        width: 70%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
     }
 }
 
