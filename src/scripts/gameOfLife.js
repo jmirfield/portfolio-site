@@ -99,7 +99,7 @@ export class GameRenderer {
 
     #fillOne(x, y) {
         const c = this.#ctx;
-        c.roundRect(x * this.#width, y * this.#height, this.#width, this.#height, { upperLeft: 5, upperRight: 5, lowerLeft: 5, lowerRight: 5 }, true)
+        c.fillRect(x * this.#width, y * this.#height, this.#width, this.#height);
     }
 
     #drawGrid() {
@@ -119,6 +119,8 @@ export class GameRenderer {
     }
 
     #drawCells() {
+        const c = this.#ctx;
+        c.beginPath();
         for (let i = 0; i < this.#gameOfLife.matrix.length; i++) {
             for (let t = 0; t < this.#gameOfLife.matrix.length; t++) {
                 if (this.#gameOfLife.matrix[i][t]) {
@@ -126,6 +128,7 @@ export class GameRenderer {
                 }
             }
         }
+        c.stroke();
     }
 
     draw() {
