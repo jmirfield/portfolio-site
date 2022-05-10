@@ -12,7 +12,7 @@
     left: 0;
     right: 0;
     background-color: #417ec1;
-    z-index: 2;
+    z-index: 3;
     animation: slidein .5s;
     height: 2rem;
     font-size: 1.5rem;
@@ -61,6 +61,12 @@
     margin-top: 5rem;
     height: 75%;
     z-index: 2;
+}
+
+#canvas-controls {
+    position: absolute;
+    margin-top: .5rem;
+    z-index: 1;
 }
 
 #canvas-controls>button {
