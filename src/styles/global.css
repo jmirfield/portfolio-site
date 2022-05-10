@@ -161,6 +161,9 @@ ul {
         padding-top: 1rem;
     }
 
+    #projects > section {
+        padding: 1rem;
+    }
 
 }
 
