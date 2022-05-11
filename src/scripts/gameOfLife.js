@@ -85,13 +85,15 @@ export class GameRenderer {
     #gameOfLife;
     #canvas;
     #ctx;
+    #img;
     #width;
     #height;
     #debug;
-    constructor(gameOfLife, canvas, debug = false) {
+    constructor(gameOfLife, canvas, img = false, debug = false) {
         this.#gameOfLife = gameOfLife;
         this.#canvas = canvas;
         this.#ctx = canvas.getContext('2d');
+        this.#img = img;
         this.#width = canvas.width / gameOfLife.matrix.length;
         this.#height = canvas.height / gameOfLife.matrix.length;
         this.#debug = debug;
@@ -100,7 +102,11 @@ export class GameRenderer {
     #fillOne(x, y) {
         const c = this.#ctx;
         // c.fillRect(x * this.#width, y * this.#height, this.#width, this.#height);
-        c.roundRect(x * this.#width, y * this.#height, this.#width, this.#height, 5, true);
+        if (!this.#img) {
+            c.roundRect(x * this.#width, y * this.#height, this.#width, this.#height, 5, true);
+        } else {
+            c.drawImage(this.#img, 0, 0, 10, 10, x * this.#width, y * this.#height, this.#width, this.#height);
+        }
     }
 
     #drawGrid() {

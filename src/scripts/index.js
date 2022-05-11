@@ -20,8 +20,11 @@ const mainCanvas = () => {
 
     // const particles = new Particles(canvas, 100);
 
+    const gameOfLifeSprite = document.createElement('img');
+    gameOfLifeSprite.setAttribute('src', 'assets/cell.png');
+    document.body.appendChild(gameOfLifeSprite)
     const gameOfLife = new GameOfLife(100);
-    const gameOfLifeRenderer = new GameRenderer(gameOfLife, canvas);
+    const gameOfLifeRenderer = new GameRenderer(gameOfLife, canvas, gameOfLifeSprite);
 
     //Worker handles all logic
     const gameOfLifeWorker = new Worker(new URL('../workers/game-worker.js', import.meta.url));
