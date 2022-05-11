@@ -24,6 +24,8 @@ const mainCanvas = () => {
     const gameOfLifeSprite = document.createElement('img');
     gameOfLifeSprite.setAttribute('src', cell);
     gameOfLifeSprite.setAttribute('alt', "Sprite for game of life simulation");
+    gameOfLifeSprite.setAttribute('width', '10px');
+    gameOfLifeSprite.setAttribute('height', '10px');
     document.body.appendChild(gameOfLifeSprite)
     const gameOfLife = new GameOfLife(150);
     const gameOfLifeRenderer = new GameRenderer(gameOfLife, canvas, gameOfLifeSprite);
