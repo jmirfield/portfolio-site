@@ -1,6 +1,7 @@
 import Typewriter from "./typewriter";
 // import Particles from "./particles";
 import { GameOfLife, GameRenderer } from './gameOfLife';
+import cell from '../../public/assets/cell.png';
 import '../styles/mainCanvas.css';
 
 const mainCanvas = () => {
@@ -21,7 +22,7 @@ const mainCanvas = () => {
     // const particles = new Particles(canvas, 100);
 
     const gameOfLifeSprite = document.createElement('img');
-    gameOfLifeSprite.setAttribute('src', 'assets/cell.png');
+    gameOfLifeSprite.setAttribute('src', cell);
     document.body.appendChild(gameOfLifeSprite)
     const gameOfLife = new GameOfLife(150);
     const gameOfLifeRenderer = new GameRenderer(gameOfLife, canvas, gameOfLifeSprite);
