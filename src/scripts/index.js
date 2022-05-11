@@ -26,7 +26,7 @@ const mainCanvas = () => {
     gameOfLifeSprite.setAttribute('alt', "Sprite for game of life simulation");
     gameOfLifeSprite.setAttribute('width', '10px');
     gameOfLifeSprite.setAttribute('height', '10px');
-    const gameOfLife = new GameOfLife(150);
+    const gameOfLife = new GameOfLife(screen.width > 768 ? 150 : 100);
     const gameOfLifeRenderer = new GameRenderer(gameOfLife, canvas, gameOfLifeSprite);
 
     //Worker handles all logic
