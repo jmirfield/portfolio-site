@@ -23,7 +23,7 @@ const mainCanvas = () => {
     const gameOfLifeSprite = document.createElement('img');
     gameOfLifeSprite.setAttribute('src', 'assets/cell.png');
     document.body.appendChild(gameOfLifeSprite)
-    const gameOfLife = new GameOfLife(100);
+    const gameOfLife = new GameOfLife(150);
     const gameOfLifeRenderer = new GameRenderer(gameOfLife, canvas, gameOfLifeSprite);
 
     //Worker handles all logic
