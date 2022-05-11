@@ -36,5 +36,5 @@ customElements.define('my-project',
             this.shadowRoot.appendChild(section);
 
         }
-    }, {extends: 'section'}
+    }
 )
