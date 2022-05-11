@@ -101,9 +101,8 @@ export class GameRenderer {
 
     #fillOne(x, y) {
         const c = this.#ctx;
-        // c.fillRect(x * this.#width, y * this.#height, this.#width, this.#height);
         if (!this.#img) {
-            c.roundRect(x * this.#width, y * this.#height, this.#width, this.#height, 5, true);
+            c.fillRect(x * this.#width, y * this.#height, this.#width, this.#height);
         } else {
             c.drawImage(this.#img, 0, 0, 10, 10, x * this.#width, y * this.#height, this.#width, this.#height);
         }
