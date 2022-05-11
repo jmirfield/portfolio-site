@@ -39,6 +39,7 @@ const mainCanvas = () => {
 
     reset.addEventListener('click', (e) => {
         gameOfLife.reset();
+        gameOfLifeWorker.postMessage({ status: 'UPDATE', matrix: gameOfLife.matrix });
     })
 
     const init = () => {
