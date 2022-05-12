@@ -47,9 +47,6 @@ const mainCanvas = () => {
         gameOfLifeWorker.postMessage({ status: 'UPDATE', matrix: gameOfLife.matrix });
     })
 
-    const init = () => {
-        requestAnimationFrame(animate);
-    }
 
     const animate = () => {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -62,8 +59,8 @@ const mainCanvas = () => {
         setTimeout(() => requestAnimationFrame(animate), 100)
     }
 
-    init();
-
+    requestAnimationFrame(animate);
+    
     window.onresize = () => {
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
