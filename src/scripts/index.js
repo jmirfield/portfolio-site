@@ -17,16 +17,17 @@ const mainCanvas = () => {
         "Back-End Developer"
     ];
 
-    const typewriter = new Typewriter(canvas, TYPED_MESSAGES);
+    const typewriter = new Typewriter(TYPED_MESSAGES);
+    const typewriterElement = document.getElementById('typewriter');
 
     // const particles = new Particles(canvas, 100);
 
+    const gameOfLife = new GameOfLife(screen.width > 768 ? 100 : 75);
     const gameOfLifeSprite = document.createElement('img');
     gameOfLifeSprite.setAttribute('src', cell);
     gameOfLifeSprite.setAttribute('alt', "Sprite for game of life simulation");
     gameOfLifeSprite.setAttribute('width', '10px');
     gameOfLifeSprite.setAttribute('height', '10px');
-    const gameOfLife = new GameOfLife(screen.width > 768 ? 100 : 75);
     const gameOfLifeRenderer = new GameRenderer(gameOfLife, canvas, gameOfLifeSprite);
 
     //Worker handles all logic
@@ -58,7 +59,8 @@ const mainCanvas = () => {
             gameOfLifeRenderer.draw();
             gameOfLifeWorker.postMessage({ status: 'UPDATE', matrix: gameOfLife.matrix });
         }
-        typewriter.draw();
+        typewriterElement.innerHTML = typewriter.text;
+        typewriter.update();
         // particles.draw();
         setTimeout(() => requestAnimationFrame(animate), 100)
     }

@@ -1,17 +1,13 @@
 'use strict';
 
 class Typewriter {
-    #canvas;
-    #ctx;
     #messages;
     #position;
     #index;
     #text;
     #stage;
     #delay;
-    constructor(canvas, messages) {
-        this.#canvas = canvas;
-        this.#ctx = canvas.getContext('2d');
+    constructor(messages) {
         this.#messages = messages;
         this.#text = "";
         this.#index = 0;
@@ -23,24 +19,12 @@ class Typewriter {
 
     get text() {
         if (this.#delay % 5 !== 0) {
-            return this.#text + " "
+            return this.#text + "&nbsp"
         }
         return this.#text + "_";
     }
 
-    draw() {
-        const font = this.#canvas.width > 768 ? '64px VT323' : '44px VT323';
-        this.#ctx.globalAlpha = 1;
-        this.#ctx.font = font;
-        this.#ctx.fillStyle = 'white';
-        this.#ctx.textBaseline = 'middle';
-        this.#ctx.textAlign = 'center';
-        this.#ctx.fillText(this.text, this.#canvas.width / 2, this.#canvas.height / 2);
-        this.#ctx.strokeText(this.text, this.#canvas.width / 2, this.#canvas.height / 2);
-        this.#next()
-    }
-
-    #next() {
+    update() {
         switch (this.#stage) {
             //Start typing
             case (0): {
