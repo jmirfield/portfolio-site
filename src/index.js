@@ -1,5 +1,4 @@
-import mainCanvas from './scripts/index.js';
-import setEvents from './scripts/setEvents.js';
+import main from './scripts/index.js';
 import resume from './../public/assets/resume.pdf';
 import './components/project.js';
 import './styles/global.css';
@@ -9,6 +8,5 @@ document.body.style.visibility = 'visible';
 
 
 window.onload = () => {
-    mainCanvas()
-    setEvents()
+    main()
 }

@@ -1,10 +1,16 @@
+'use strict';
+
+import setEvents from './setEvents.js';
 import Typewriter from "./typewriter";
 import { GameOfLife, GameRenderer } from './gameOfLife';
 import cell from '../../public/assets/cell.png';
 import '../styles/mainCanvas.css';
 
 //Main Entry
-const mainCanvas = () => {
+const main = () => {
+
+    setEvents()
+
     const canvas = document.getElementById('home');
     const ctx = canvas.getContext('2d');
     canvas.width = window.innerWidth;
@@ -60,11 +66,11 @@ const mainCanvas = () => {
     }
 
     requestAnimationFrame(animate);
-    
+
     window.onresize = () => {
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
     }
 }
 
-export default mainCanvas;
+export default main;
