@@ -1,4 +1,3 @@
-import 'jest-canvas-mock';
 import { GameOfLife } from "../scripts/gameOfLife";
 
 describe('game of life', () => {
