@@ -9,7 +9,7 @@ import '../styles/mainCanvas.css';
 //Main Entry
 const main = () => {
 
-    setEvents()
+    setEvents();
 
     const canvas = document.getElementById('home');
     const ctx = canvas.getContext('2d');
