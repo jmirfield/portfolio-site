@@ -1,15 +1,14 @@
 import Typewriter from "./typewriter";
-// import Particles from "./particles";
 import { GameOfLife, GameRenderer } from './gameOfLife';
 import cell from '../../public/assets/cell.png';
 import '../styles/mainCanvas.css';
 
+//Main Entry
 const mainCanvas = () => {
     const canvas = document.getElementById('home');
     const ctx = canvas.getContext('2d');
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
-
 
     const TYPED_MESSAGES = [
         "Software Engineer",
@@ -17,10 +16,9 @@ const mainCanvas = () => {
         "Back-End Developer"
     ];
 
+    //Object managing typewriter logic
     const typewriter = new Typewriter(TYPED_MESSAGES);
     const typewriterElement = document.getElementById('typewriter');
-
-    // const particles = new Particles(canvas, 100);
 
     const gameOfLife = new GameOfLife(screen.width > 768 ? 100 : 75);
     const gameOfLifeSprite = document.createElement('img');
@@ -61,7 +59,6 @@ const mainCanvas = () => {
         }
         typewriterElement.innerHTML = typewriter.text;
         typewriter.update();
-        // particles.draw();
         setTimeout(() => requestAnimationFrame(animate), 100)
     }
 
