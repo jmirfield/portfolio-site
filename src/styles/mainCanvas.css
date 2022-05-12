@@ -63,9 +63,9 @@
     align-items: center;
     margin-top: 14rem;
     height: 75%;
-    width: 75%;
     z-index: 2;
 }
+
 
 #canvas-controls {
     position: absolute;
@@ -78,7 +78,7 @@
 }
 
 .typewriter {
-    display:flex;
+    display: flex;
     justify-content: center;
 }
 
