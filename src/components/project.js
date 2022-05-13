@@ -21,17 +21,16 @@ customElements.define('my-project',
             const section = document.createElement('section');
             section.setAttribute('class', 'footer');
             
-            const demo = document.createElement('a');
             const demoURL = this.getAttribute('demo');
             if(demoURL){
+                const demo = document.createElement('a');
                 demo.setAttribute('href', this.getAttribute('demo'));
                 demo.innerText = 'Live Demo';
+                section.appendChild(demo);
             }
             const source = document.createElement('a');
             source.setAttribute('href', this.getAttribute('github'));
             source.innerText = 'Source';
-
-            section.appendChild(demo);
             section.appendChild(source);
 
             this.shadowRoot.appendChild(title);
