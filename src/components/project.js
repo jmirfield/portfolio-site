@@ -22,9 +22,11 @@ customElements.define('my-project',
             section.setAttribute('class', 'footer');
             
             const demo = document.createElement('a');
-            demo.setAttribute('href', this.getAttribute('demo'));
-            demo.innerText = 'Live Demo';
-
+            const demoURL = this.getAttribute('demo');
+            if(demoURL){
+                demo.setAttribute('href', this.getAttribute('demo'));
+                demo.innerText = 'Live Demo';
+            }
             const source = document.createElement('a');
             source.setAttribute('href', this.getAttribute('github'));
             source.innerText = 'Source';
